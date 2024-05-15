@@ -1,15 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <MenuBar class="flex flex-column"></MenuBar>
+    <!-- <img alt="Vue logo" src="./assets/logo.png">
+    <MainPage></MainPage> -->
+    <router-view class="body flex flex-column"></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MenuBar from './layouts/MenuBar.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MenuBar
   }
 }
 </script>
@@ -21,6 +25,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+}
+.body {
+  padding-top: 20px;
 }
 </style>
