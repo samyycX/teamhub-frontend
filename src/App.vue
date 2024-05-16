@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <MenuBar class="flex flex-column"></MenuBar>
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <MainPage></MainPage> -->
