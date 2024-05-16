@@ -23,7 +23,7 @@ import Button from 'primevue/button'
 
 const post = ref({
   author: {
-    avatar: "test_avatar.jpg",
+    avatar: require("@/assets/test_avatar.jpg"),
     name: "测试用户"
   },
   time: Date.now(),
