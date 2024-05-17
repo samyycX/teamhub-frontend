@@ -1,44 +1,53 @@
 <template>
- <div class="flex flex-column gap-6">
-  <div class="flex flex-row comment" :key="comment.id" v-for="comment in comments">
-   <ActivitySingleComment :comment="comment"></ActivitySingleComment>
+ <div class="flex flex-column gap-3 comments flex-grow-1">
+  <div class="flex">
+   <ActivityCommentInput class="flex flex-grow-1" :owner-id="props.ownerId"/>
   </div>
+  <div class="flex" v-for="comment in props.comments.slice(first, first+rows)" :key="comment.id">
+   <ActivitySingleComment class="flex" :comment="comment" :owner-id="props.ownerId" />
+  </div> 
+   <Paginator
+   class="flex"
+   v-if="props.comments != undefined && props.comments.length > rows"
+   v-model:first="first"
+   :rows="rows"
+   :total-records="props.comments.length"
+   />
  </div> 
 </template>
-
+ 
 <script setup>
-import { ref } from 'vue';
+import { defineProps, ref } from "vue";
+
 import ActivitySingleComment from "./ActivitySingleComment.vue"
+import ActivityCommentInput from './ActivityCommentInput.vue'
+import Paginator from "primevue/paginator";
 
-const user = {
- avatar: require("@/assets/test_avatar.jpg"),
- name: "测试用户"
-}
+const props = defineProps({
+ comments: {
+  type: Array, 
+  required: true
+ },
+ ownerId: {
+  type: Number,
+  required: true
+ }
+})
 
-var id = {
- value: 0
-};
-id.call = () => {
- return this.value++
-};
+const first = ref(0) // 分页器控制的初始index
+const rows = 3 // 分页器行数
 
-const comment = {
- id: id,
- author: user,
- content: "测试，测试测试测试测试测试测试测试测试。"
-}
-const complexComment = {
- id: id,
- author: user,
- content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",
- subComments: [
-  comment, comment, comment
- ]
-}
-const comments = ref([
- complexComment,
- comment,
- comment
-])
 </script>
 
+<style scoped>
+.comments {
+ padding-left: 0.7em;
+ border-left: 2px;
+ border-left-style: solid;
+ border-left-color: var(--primary-color);
+ transform: scale(0.95);
+ transform-origin: left;
+ left: 0;
+
+}
+</style>

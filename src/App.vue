@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import '@/assets/text/text.css'
 import MenuBar from './layouts/MenuBar.vue';
 
 export default {
@@ -19,8 +20,13 @@ export default {
 </script>
 
 <style>
+:root {
+  --font-family: "PingFang SC", -apple-system, 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, 'Liberation Sans', 'Hiragino Sans GB',
+  'Source Han Sans CN', 'Source Han Sans SC', 'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei,
+  'WenQuanYi Zen Hei Sharp', sans-serif !important;
+
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
