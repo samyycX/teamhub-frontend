@@ -1,3 +1,5 @@
+# 已迁移至 https://github.com/samyycX/cattleya
+
 # teamhub-frontend
 
 ## Project setup
